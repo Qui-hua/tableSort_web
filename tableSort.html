@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>HTML5拖曳多檔案上傳</title>
+    <title>tableSort</title>
 	
 
 
@@ -16,6 +16,7 @@
 
 
 
+	<input type="button" value="Show Msg From script2" onclick="ShowMsgFromScript2()">
 <table id="myTable" class="tablesorter">
 	<thead>
 		<tr>
@@ -26,7 +27,7 @@
 		<th>註冊時間</th>
 		</tr>
 	</thead>
-	<tbody>
+	<tbody  class="listviewtbody" id="listviewtbody">
 	<tr><td class ="noshow">加值會員</td><td>W00001</td><td>Wayne</td><td>男生</td><td>2014/9/12</td></tr>
 	<tr><td>一般會員</td><td>W00002</td><td>Chen</td><td>女生</td><td>2014/9/17</td></tr>
 	<tr><td>一般會員</td><td>W00003</td><td>Ken</td><td>男生</td><td>2014/9/17</td></tr>
@@ -41,7 +42,36 @@
 </table>
 	
 <script>
+function ShowMsgFromScript2()
+{
+
+		$(".listviewtbody").empty();
+		var filelistStr = '<tr><td class ="noshow">加DDD值會員</td><td>W00001</td><td>Wayne</td><td>男生</td><td>2014/9/12</td></tr>'
+	+'<tr><td>一般會員</td><td>W00002</td><td>Chen</td><td>女生</td><td>2014/9/17</td></tr>    '
+	+'<tr><td>一般會員</td><td>W00003</td><td>Ken</td><td>男生</td><td>2014/9/17</td></tr>     '
+	+'<tr><td>一般會員</td><td>W00004</td><td>Sung</td><td>男SS生</td><td>2014/9/17</td></tr>    '
+	+'<tr><td>一般會員</td><td>W00005</td><td>Liu</td><td>AA男生</td><td>2014/9/17</td></tr>     '
+	+'<tr><td>一般會員</td><td>W00006</td><td>Don</td><td>男生</td><td>2014/9/18</td></tr>     '
+	+'<tr><td>一般會員</td><td>W00007</td><td>Chan</td><td>女生</td><td>2014/9/18</td></tr>    '
+	+'<tr><td>一般會員</td><td>W00008</td><td>Tung</td><td>女生</td><td>2014/9/18</td></tr>    '
+	+'<tr><td>一般會員</td><td>W00009</td><td>陳俊</td><td>男生</td><td>2014/9/18</td></tr>     '
+	+'<tr><td>一般會員</td><td>W00010</td><td>HY</td><td>男生</td><td>2014/9/18</td></tr>     ';
+		$(".listviewtbody").append(filelistStr);
+
+	$("#myTable").tablesorter({
+			theme: "blue"
+		});
+		
+//////將整個表更新//////
+	$("#myTable").trigger("updateAll");
+}
+
 $("#myTable").tablesorter({
+	headers: {
+ 0: {sorter: false},
+
+ 3: {sorter: false}
+},
 theme: "blue",
 widgets: ['zebra']
 });
